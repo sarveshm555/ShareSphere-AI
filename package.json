@@ -1,0 +1,21 @@
+{
+  "name": "equipx-backend",
+  "version": "1.0.0",
+  "description": "EquipX Smart Resource Sharing Platform Backend Services",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "test:connection": "node scripts/testConnection.js"
+  },
+  "keywords": [
+    "equipx",
+    "supabase",
+    "backend"
+  ],
+  "author": "EquipX Team",
+  "license": "MIT",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.0",
+    "dotenv": "^16.4.5"
+  }
+}
