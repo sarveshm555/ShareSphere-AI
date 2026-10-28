@@ -1,0 +1,16 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Environment variables & secrets (CRITICAL)
+.env
+.env.local
+*.env
+
+# Operating system files
+Thumbs.db
+.DS_Store
+
+# IDE configs
+.vscode/
+.idea/
