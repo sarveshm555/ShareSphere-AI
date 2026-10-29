@@ -1,7 +1,7 @@
-Markdown
-# EquipX — Smart Resource Sharing Platform (Backend Services)
+﻿Markdown
+# EquipX ΓÇö Smart Resource Sharing Platform (Backend Services)
 
-EquipX is a serverless, database-first resource-sharing platform engineered for college laboratories, maker spaces, and departmental equipment centers. It manages the complete equipment-borrowing lifecycle—from discovery and TrustPass eligibility checks to atomic reservation scheduling, physical handover verification, and immutable audit logs.
+EquipX is a serverless, database-first resource-sharing platform engineered for college laboratories, maker spaces, and departmental equipment centers. It manages the complete equipment-borrowing lifecycleΓÇöfrom discovery and TrustPass eligibility checks to atomic reservation scheduling, physical handover verification, and immutable audit logs.
 
 ---
 
@@ -9,26 +9,26 @@ EquipX is a serverless, database-first resource-sharing platform engineered for 
 
 EquipX replaces traditional API middle-layers with direct, secure PostgreSQL integration powered by Supabase.
 
-┌────────────────────────────────────────────────────────┐
-│               React Frontend (Member 1)                │
-└────────────┬──────────────────────────────▲────────────┘
-│                              │
+ΓöîΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÉ
+Γöé               React Frontend (Member 1)                Γöé
+ΓööΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓö¼ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓû▓ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÿ
+Γöé                              Γöé
 
 Client Operations            4. Live Data Streams
-│                              │
-┌────────────▼──────────────────────────────┴────────────┐
-│                  Supabase Platform                     │
-│                                                        │
-│  ┌──────────────────┐         ┌─────────────────────┐  │
-│  │  Supabase Auth   ├─────────►  PostgreSQL Engine  │  │
-│  │ (JWT Validation) │         │  - Row Level Sec.   │  │
-│  └──────────────────┘         │  - Atomic RPC Funcs │  │
-│                               │  - Exclusion Locks  │  │
-│  ┌──────────────────┐         │  - Audit Triggers   │  │
-│  │ Supabase Storage │         └─────────────────────┘  │
-│  │ (Public/Signed)  │                                  │
-│  └──────────────────┘                                  │
-└────────────────────────────────────────────────────────┘
+Γöé                              Γöé
+ΓöîΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓû╝ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓö┤ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÉ
+Γöé                  Supabase Platform                     Γöé
+Γöé                                                        Γöé
+Γöé  ΓöîΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÉ         ΓöîΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÉ  Γöé
+Γöé  Γöé  Supabase Auth   Γö£ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓû║  PostgreSQL Engine  Γöé  Γöé
+Γöé  Γöé (JWT Validation) Γöé         Γöé  - Row Level Sec.   Γöé  Γöé
+Γöé  ΓööΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÿ         Γöé  - Atomic RPC Funcs Γöé  Γöé
+Γöé                               Γöé  - Exclusion Locks  Γöé  Γöé
+Γöé  ΓöîΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÉ         Γöé  - Audit Triggers   Γöé  Γöé
+Γöé  Γöé Supabase Storage Γöé         ΓööΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÿ  Γöé
+Γöé  Γöé (Public/Signed)  Γöé                                  Γöé
+Γöé  ΓööΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÿ                                  Γöé
+ΓööΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÿ
 
 
 ### Technology Stack
@@ -117,65 +117,6 @@ node scripts/testAiMatching.js
 
 # 4. Run the complete 12-step End-to-End Acceptance Test
 node scripts/runAcceptanceTest.js
-Integration Contracts
-Frontend Integration (Member 1): Refer to docs/FRONTEND_INTEGRATION.md for complete function signatures, React hook examples, and error-handling patterns.
-
-Deployment & Auth Checklist (Member 3): Refer to docs/DEPLOYMENT_CHECKLIST.md for production hosting, authentication redirect URLs, and environment variables.
-
-
-#### `docs/DEPLOYMENT_CHECKLIST.md`
-Open `docs/DEPLOYMENT_CHECKLIST.md` in VS Code and paste:
-
-```markdown
-# EquipX — Deployment & Production Checklist (Member 3)
-
-This checklist outlines the responsibilities and verification steps for **Member 3 (Authentication & Deployment)** to launch EquipX to production on Vercel/Netlify with Supabase.
-
----
-
-## 1. Supabase Production Settings
-
-### Authentication & Redirect URLs
-* [ ] **Site URL:** Configure your production frontend domain (e.g., `https://equipx.vercel.app`) under **Authentication -> URL Configuration -> Site URL**.
-* [ ] **Redirect URLs:** Add local and preview deployment wildcards to **Redirect URLs**:
-  * `http://localhost:5173/**`
-  * `https://equipx.vercel.app/**`
-  * `https://*-your-team.vercel.app/**`
-* [ ] **Disable Debug Rate Limits:** If needed for the hackathon showcase, adjust **Authentication -> Rate Limits** so multiple judges can sign up simultaneously.
-* [ ] **Email Confirmations:** Keep **Confirm email** toggled **OFF** unless you have configured a custom SMTP provider (e.g., SendGrid/Resend) to prevent onboarding drop-off.
-
----
-
-## 2. Frontend Hosting Configuration (Vercel / Netlify)
-
-### Environment Variables
-Inject the following environment variables into the production hosting dashboard:
-
-| Variable Name | Environment | Value Description |
-| :--- | :--- | :--- |
-| `VITE_SUPABASE_URL` | Production & Preview | Remote Supabase project URL (`https://xyz.supabase.co`) |
-| `VITE_SUPABASE_ANON_KEY` | Production & Preview | Public `anon` API key (safe for browser exposure) |
-
-*DO NOT inject `SUPABASE_SERVICE_ROLE_KEY` into the frontend build.*
-
----
-
-## 3. Database & Storage Production Audit
-
-* [ ] **Exclusion Constraint Active:** Confirm `btree_gist` is enabled and `prevent_overlapping_approved_bookings` constraint is listed under `public.bookings`.
-* [ ] **Storage Buckets Active:**
-  * `resource-images`: Public bucket for equipment photos.
-  * `condition-photos`: Private bucket for ProofLoop condition snapshots.
-* [ ] **Profiles Trigger Active:** Verify `on_auth_user_created` trigger automatically provisions new accounts as `student`.
-
----
-
-## 4. Production Smoke Test
-
-Before demoing to hackathon judges, verify this sequence on the live production URL:
-1. Register a new user (`judge.test@example.com`).
-2. Verify role defaults to `student` without admin permissions.
-3. Browse equipment catalog and test keyword search.
-4. Submit a reservation request.
-5. Log in with the owner account and approve the request.
-6. Verify live notification banner and badge count.
+### Integration Contracts
+* **Frontend Integration (Member 1):** Refer to [`docs/FRONTEND_INTEGRATION.md`](docs/FRONTEND_INTEGRATION.md) for complete function signatures, React hook examples, and error-handling patterns.
+* **Deployment & Auth Checklist (Member 3):** Refer to [`docs/DEPLOYMENT_CHECKLIST.md`](docs/DEPLOYMENT_CHECKLIST.md) for production hosting, authentication redirect URLs, and environment variables.
