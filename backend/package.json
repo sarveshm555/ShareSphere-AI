@@ -5,7 +5,17 @@
   "main": "src/index.js",
   "type": "module",
   "scripts": {
-    "test:connection": "node scripts/testConnection.js"
+    "test": "node scripts/runAcceptanceTest.js",
+    "test:connection": "node scripts/testConnection.js",
+    "test:schema": "node scripts/verifySchema.js",
+    "test:resources": "node scripts/testResourceService.js",
+    "test:eligibility": "node scripts/testEligibilityService.js",
+    "test:bookings": "node scripts/testBookingService.js",
+    "test:handover": "node scripts/testHandoverService.js",
+    "test:notifications": "node scripts/testAuditAndNotificationService.js",
+    "test:storage": "node scripts/testStorageService.js",
+    "test:ai": "node scripts/testAiMatching.js",
+    "test:all": "node scripts/runAcceptanceTest.js"
   },
   "keywords": [
     "equipx",
