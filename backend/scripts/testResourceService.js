@@ -1,33 +1,26 @@
-import { supabase } from '../src/config/supabaseClient.js';
+﻿import { supabase } from '../src/config/supabaseClient.js';
 import { resourceService } from '../src/services/resourceService.js';
 
 async function runResourceServiceTest() {
   console.log('--- EquipX Backend: Testing Resource Service Module ---');
 
-  // Use a standard public domain format (@gmail.com or @test.com) to satisfy Supabase GoTrue validation
-  const timestamp = Date.now();
-  const testEmail = `equipx.owner.${timestamp}@gmail.com`;
+  // Reusing existing test student account to avoid hitting public signup rate limits
+  const testEmail = 'equipx.test.student@gmail.com';
   const testPassword = 'Password123!';
 
-  console.log(`\n1. Creating temporary test user: ${testEmail}`);
-  const { data: authData, error: signUpError } = await supabase.auth.signUp({
+  console.log(`\n1. Authenticating as test student: ${testEmail}`);
+  const { data: authData, error: authError } = await supabase.auth.signInWithPassword({
     email: testEmail,
     password: testPassword,
-    options: {
-      data: {
-        full_name: 'Dr. Jane Vance (Lab Director)',
-        institution: 'School of Engineering',
-      },
-    },
   });
 
-  if (signUpError || !authData.user) {
-    console.error('FAIL: User sign-up failed:', signUpError?.message);
+  if (authError || !authData.user) {
+    console.error('FAIL: User sign-in failed:', authError?.message);
     process.exit(1);
   }
 
   const userId = authData.user.id;
-  console.log(`PASS: User created with ID: ${userId}`);
+  console.log(`PASS: Authenticated student session active with ID: ${userId}`);
 
   // Test RLS Boundary: Newly registered users receive the default 'student' role.
   // The RLS policy "Owners and admins can create resources" must reject this insert.
@@ -49,7 +42,7 @@ async function runResourceServiceTest() {
   console.log(`PASS: Retrieved catalog. Total resources registered: ${catalog.pagination.totalItems}`);
 
   console.log('\n4. Testing Keyword Search & Filtering syntax...');
-  const searchResult = await resourceService.getResources({
+  await resourceService.getResources({
     search: 'oscilloscope',
     category: 'Electronics',
   });
