@@ -1,25 +1,20 @@
 import { createClient } from '@supabase/supabase-js';
-import dotenv from 'dotenv';
 
-// Load local environment variables when executed in a Node.js runtime (scripts, tests)
-if (typeof process !== 'undefined' && process.env) {
-  dotenv.config();
-}
-
-// Support both standard Node.js process.env and Vite frontend import.meta.env
+// Resolve environment variables using Vite's standard import.meta.env,
+// with safe fallback to process.env if executed in a Node.js runtime (e.g. testing).
 const supabaseUrl =
-  (typeof process !== 'undefined' && process.env?.SUPABASE_URL) ||
-  (typeof process !== 'undefined' && process.env?.VITE_SUPABASE_URL) ||
-  (typeof import.meta !== 'undefined' && import.meta.env?.VITE_SUPABASE_URL);
+  (typeof import.meta !== 'undefined' && import.meta.env?.VITE_SUPABASE_URL) ||
+  (typeof process !== 'undefined' && (process.env?.VITE_SUPABASE_URL || process.env?.SUPABASE_URL)) ||
+  '';
 
 const supabaseAnonKey =
-  (typeof process !== 'undefined' && process.env?.SUPABASE_ANON_KEY) ||
-  (typeof process !== 'undefined' && process.env?.VITE_SUPABASE_ANON_KEY) ||
-  (typeof import.meta !== 'undefined' && import.meta.env?.VITE_SUPABASE_ANON_KEY);
+  (typeof import.meta !== 'undefined' && import.meta.env?.VITE_SUPABASE_ANON_KEY) ||
+  (typeof process !== 'undefined' && (process.env?.VITE_SUPABASE_ANON_KEY || process.env?.SUPABASE_ANON_KEY)) ||
+  '';
 
 if (!supabaseUrl || !supabaseAnonKey) {
   console.warn(
-    '[EquipX Warning]: Supabase URL or Anon Key is missing. Ensure your .env file is populated.'
+    '[EquipX Warning]: Supabase URL or Anon Key is missing. Ensure your VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY environment variables are configured.'
   );
 }
 
@@ -40,7 +35,7 @@ export const supabase = createClient(supabaseUrl || '', supabaseAnonKey || '', {
  * Strictly used for offline CLI tasks and seed automation; never exposed to React.
  */
 export const createAdminClient = () => {
-  const serviceRoleKey = process.env?.SUPABASE_SERVICE_ROLE_KEY;
+  const serviceRoleKey = typeof process !== 'undefined' ? process.env?.SUPABASE_SERVICE_ROLE_KEY : undefined;
   if (!serviceRoleKey) {
     throw new Error('Cannot instantiate admin client: SUPABASE_SERVICE_ROLE_KEY is not defined.');
   }
