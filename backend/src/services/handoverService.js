@@ -1,6 +1,6 @@
-import { supabase } from '../config/supabaseClient.js';
+﻿import { supabase } from '../config/supabaseClient.js';
 import { AppError, NotFoundError, ValidationError } from '../utils/errors.js';
-import { validateUUID, validateRequiredFields } from '../utils/validators.js';
+import { validateUUID } from '../utils/validators.js';
 
 /**
  * ProofLoop Handover Service
