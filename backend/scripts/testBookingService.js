@@ -1,4 +1,4 @@
-import { supabase } from '../src/config/supabaseClient.js';
+﻿import { supabase } from '../src/config/supabaseClient.js';
 import { bookingService } from '../src/services/bookingService.js';
 
 const TEST_OWNER = {
@@ -118,13 +118,11 @@ async function runBookingLifecycleTests() {
   const student = await ensureUser(TEST_STUDENT);
   console.log(`PASS: Student authenticated with ID: ${student.id}`);
 
-  // Define identical overlapping time windows (Tomorrow 10:00 to 12:00 UTC)
-  const tomorrow = new Date();
-  tomorrow.setDate(tomorrow.getDate() + 1);
-  tomorrow.setUTCHours(10, 0, 0, 0);
-
-  const startTime = tomorrow.toISOString();
-  const endTime = new Date(tomorrow.getTime() + 2 * 60 * 60 * 1000).toISOString();
+  // Define identical overlapping time windows (Dynamic future window to avoid collisions across multiple test runs)
+  const uniqueOffsetHours = 48 + Math.floor(Math.random() * 5000);
+  const startWindow = new Date(Date.now() + 3600000 * uniqueOffsetHours);
+  const startTime = startWindow.toISOString();
+  const endTime = new Date(startWindow.getTime() + 2 * 60 * 60 * 1000).toISOString();
 
   // 4. Student creates Booking #1
   console.log('\n4. Student submitting Booking Request #1...');
