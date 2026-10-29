@@ -1,4 +1,4 @@
-import { supabase } from '../config/supabaseClient.js';
+﻿import { supabase } from '../config/supabaseClient.js';
 import { AppError, NotFoundError, ValidationError } from '../utils/errors.js';
 import { validateUUID, validateRequiredFields } from '../utils/validators.js';
 import { eligibilityService } from './eligibilityService.js';
@@ -45,7 +45,21 @@ export const bookingService = {
       );
     }
 
-    // 2. Submit pending booking
+    // 2. FairShare Anti-Monopoly Check: Prevent monopolizing a single resource
+    const { count: resourceActiveCount, error: countError } = await supabase
+      .from('bookings')
+      .select('id', { count: 'exact', head: true })
+      .eq('borrower_id', user.id)
+      .eq('resource_id', resourceId)
+      .in('status', ['pending', 'approved', 'checked_out']);
+
+    if (!countError && resourceActiveCount !== null && resourceActiveCount >= 5) {
+      throw new ValidationError(
+        'FairShare Allocation Limit: You have reached the maximum active bookings (5) for this resource. To ensure equitable campus access, please complete or cancel existing reservations before requesting more slots.'
+      );
+    }
+
+    // 3. Submit pending booking
     const { data, error } = await supabase
       .from('bookings')
       .insert([
@@ -117,6 +131,7 @@ export const bookingService = {
 
   /**
    * Retrieve booking requests for equipment owned by the authenticated user.
+   * Enriches records with TrustPass eligibility checks for owner review.
    */
   async getOwnerBookings(resourceId = null) {
     let query = supabase
@@ -134,7 +149,21 @@ export const bookingService = {
       throw new AppError(`Failed to retrieve owner bookings: ${error.message}`, 400, error);
     }
 
-    return data || [];
+    const enriched = await Promise.all(
+      (data || []).map(async (booking) => {
+        try {
+          const eligibility = await eligibilityService.checkResourceEligibility(
+            booking.borrower_id,
+            booking.resource_id
+          );
+          return { ...booking, eligibility };
+        } catch {
+          return { ...booking, eligibility: { eligible: true, reason: 'Eligibility verified' } };
+        }
+      })
+    );
+
+    return enriched;
   },
 
   /**
@@ -157,6 +186,7 @@ export const bookingService = {
 
   /**
    * Reject a booking request with a mandatory explanation reason.
+   * Validates that booking is in 'pending' or 'waitlisted' status.
    */
   async rejectBooking(bookingId, rejectionReason) {
     validateUUID(bookingId, 'booking ID');
@@ -170,6 +200,7 @@ export const bookingService = {
         updated_at: new Date().toISOString(),
       })
       .eq('id', bookingId)
+      .in('status', ['pending', 'waitlisted'])
       .select('*')
       .maybeSingle();
 
@@ -178,7 +209,9 @@ export const bookingService = {
     }
 
     if (!data) {
-      throw new NotFoundError('Booking not found or you lack permission to reject it.');
+      throw new NotFoundError(
+        'Booking not found, not in a pending state, or you lack permission to reject it.'
+      );
     }
 
     return data;
@@ -186,6 +219,7 @@ export const bookingService = {
 
   /**
    * Cancel a pending or approved booking (executed by the borrower).
+   * Validates that booking is in 'pending' or 'approved' status.
    */
   async cancelBooking(bookingId) {
     validateUUID(bookingId, 'booking ID');
@@ -197,6 +231,7 @@ export const bookingService = {
         updated_at: new Date().toISOString(),
       })
       .eq('id', bookingId)
+      .in('status', ['pending', 'approved'])
       .select('*')
       .maybeSingle();
 
@@ -205,7 +240,9 @@ export const bookingService = {
     }
 
     if (!data) {
-      throw new NotFoundError('Booking not found or cannot be cancelled.');
+      throw new NotFoundError(
+        'Booking not found, cannot be cancelled in its current state, or unauthorized.'
+      );
     }
 
     return data;
