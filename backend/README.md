@@ -1,7 +1,6 @@
-﻿Markdown
-# EquipX ΓÇö Smart Resource Sharing Platform (Backend Services)
+# EquipX — Smart Resource Sharing Platform (Backend Services)
 
-EquipX is a serverless, database-first resource-sharing platform engineered for college laboratories, maker spaces, and departmental equipment centers. It manages the complete equipment-borrowing lifecycleΓÇöfrom discovery and TrustPass eligibility checks to atomic reservation scheduling, physical handover verification, and immutable audit logs.
+EquipX is a serverless, database-first resource-sharing platform engineered for college laboratories, maker spaces, and departmental equipment centers. It manages the complete equipment-borrowing lifecycle—from discovery and TrustPass eligibility checks to atomic reservation scheduling, physical handover verification, and immutable audit logs.
 
 ---
 
@@ -9,27 +8,27 @@ EquipX is a serverless, database-first resource-sharing platform engineered for 
 
 EquipX replaces traditional API middle-layers with direct, secure PostgreSQL integration powered by Supabase.
 
-ΓöîΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÉ
-Γöé               React Frontend (Member 1)                Γöé
-ΓööΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓö¼ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓû▓ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÿ
-Γöé                              Γöé
-
+```
+┌────────────────────────────────────────────────────────┐
+│               React Frontend (Member 1)                │
+└────────────┬──────────────────────────────▲────────────┘
+             │                              │
 Client Operations            4. Live Data Streams
-Γöé                              Γöé
-ΓöîΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓû╝ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓö┤ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÉ
-Γöé                  Supabase Platform                     Γöé
-Γöé                                                        Γöé
-Γöé  ΓöîΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÉ         ΓöîΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÉ  Γöé
-Γöé  Γöé  Supabase Auth   Γö£ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓû║  PostgreSQL Engine  Γöé  Γöé
-Γöé  Γöé (JWT Validation) Γöé         Γöé  - Row Level Sec.   Γöé  Γöé
-Γöé  ΓööΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÿ         Γöé  - Atomic RPC Funcs Γöé  Γöé
-Γöé                               Γöé  - Exclusion Locks  Γöé  Γöé
-Γöé  ΓöîΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÉ         Γöé  - Audit Triggers   Γöé  Γöé
-Γöé  Γöé Supabase Storage Γöé         ΓööΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÿ  Γöé
-Γöé  Γöé (Public/Signed)  Γöé                                  Γöé
-Γöé  ΓööΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÿ                                  Γöé
-ΓööΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÿ
-
+             │                              │
+┌────────────▼──────────────────────────────┴────────────┐
+│                  Supabase Platform                     │
+│                                                        │
+│  ┌──────────────────┐         ┌─────────────────────┐  │
+│  │  Supabase Auth   ├─────────►  PostgreSQL Engine  │  │
+│  │ (JWT Validation) │         │  - Row Level Sec.   │  │
+│  └──────────────────┘         │  - Atomic RPC Funcs │  │
+│                               │  - Exclusion Locks  │  │
+│  ┌──────────────────┐         │  - Audit Triggers   │  │
+│  │ Supabase Storage │         └─────────────────────┘  │
+│  │ (Public/Signed)  │                                  │
+│  └──────────────────┘                                  │
+└────────────────────────────────────────────────────────┘
+```
 
 ### Technology Stack
 * **Language & Runtime:** JavaScript (ES Modules), Node.js (v18+)
@@ -72,34 +71,31 @@ All services are exported through a single barrel entry point (`src/index.js`):
 
 ### 1. Clone & Install
 ```powershell
-git clone [https://github.com/YOUR_TEAM/equipx-backend.git](https://github.com/YOUR_TEAM/equipx-backend.git)
-cd equipx-backend
+git clone https://github.com/sarveshm555/ShareSphere-AI.git
+cd ShareSphere-AI/backend
 npm install
-2. Configure Environment Variables
-Create a .env file in the project root:
+```
 
-Code snippet
-SUPABASE_URL=[https://your-project-id.supabase.co](https://your-project-id.supabase.co)
+### 2. Configure Environment Variables
+Create a `.env` file in the `backend/` directory:
+```env
+SUPABASE_URL=https://your-project-id.supabase.co
 SUPABASE_ANON_KEY=eyJhbGciOi...
-3. Apply Database Migrations
-Execute the SQL files located in sql/ sequentially in the Supabase Dashboard SQL Editor:
+```
 
-sql/01_core_schema.sql (Profiles, Resources, Requirements, Base Triggers)
+### 3. Apply Database Migrations
+Execute the SQL files located in `sql/` sequentially in the Supabase Dashboard SQL Editor:
+1. `sql/01_core_schema.sql` (Profiles, Resources, Requirements, Base Triggers)
+2. `sql/02_eligibility_schema.sql` (TrustPass Verifications)
+3. `sql/03_bookings_schema.sql` (FairShare Bookings & Atomic Exclusion Locks)
+4. `sql/04_handover_schema.sql` (ProofLoop Check-in/out, Condition Reports, Incidents)
+5. `sql/05_audit_and_notifications_schema.sql` (Audit Ledger & In-App Alerts)
+6. `sql/06_storage_policies.sql` (Storage Buckets & Access Rules)
+7. `sql/07_security_and_notification_fixes.sql` (Security hardening of role assignment RPC & booking cancellation notifications)
 
-sql/02_eligibility_schema.sql (TrustPass Verifications)
-
-sql/03_bookings_schema.sql (FairShare Bookings & Atomic Exclusion Locks)
-
-sql/04_handover_schema.sql (ProofLoop Check-in/out, Condition Reports, Incidents)
-
-sql/05_audit_and_notifications_schema.sql (Audit Ledger & In-App Alerts)
-
-sql/06_storage_policies.sql (Storage Buckets & Access Rules)
-
-Test Suite Execution
+### 4. Test Suite Execution
 Run individual service tests or execute the complete 12-step acceptance test:
-
-PowerShell
+```powershell
 # 1. Verify Supabase connection
 npm run test:connection
 
@@ -117,6 +113,8 @@ node scripts/testAiMatching.js
 
 # 4. Run the complete 12-step End-to-End Acceptance Test
 node scripts/runAcceptanceTest.js
+```
+
 ### Integration Contracts
 * **Frontend Integration (Member 1):** Refer to [`docs/FRONTEND_INTEGRATION.md`](docs/FRONTEND_INTEGRATION.md) for complete function signatures, React hook examples, and error-handling patterns.
 * **Deployment & Auth Checklist (Member 3):** Refer to [`docs/DEPLOYMENT_CHECKLIST.md`](docs/DEPLOYMENT_CHECKLIST.md) for production hosting, authentication redirect URLs, and environment variables.

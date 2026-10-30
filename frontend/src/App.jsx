@@ -500,7 +500,7 @@ function App() {
             onClick={() => setShowNotifDrawer(true)}
             aria-label="View notifications"
           >
-            ≡ƒöö
+            🔔
             {unreadCount > 0 && (
               <span className="notif-badge">{unreadCount > 9 ? "9+" : unreadCount}</span>
             )}
@@ -525,31 +525,31 @@ function App() {
           className={`portal-tab-btn ${activeTab === "explore" ? "active" : ""}`}
           onClick={() => setActiveTab("explore")}
         >
-          ≡ƒöì Explore Catalog
+          🔍 Explore Catalog
         </button>
         <button
           className={`portal-tab-btn ${activeTab === "my-bookings" ? "active" : ""}`}
           onClick={() => setActiveTab("my-bookings")}
         >
-          ≡ƒôï My Bookings ({myBookings.length})
+          📋 My Bookings ({myBookings.length})
         </button>
         <button
           className={`portal-tab-btn ${activeTab === "owner-portal" ? "active" : ""}`}
           onClick={() => setActiveTab("owner-portal")}
         >
-          ≡ƒ¢í∩╕Å Owner Approvals ({ownerBookings.filter((b) => b.status === "pending").length})
+          🛡️ Owner Approvals ({ownerBookings.filter((b) => b.status === "pending").length})
         </button>
         <button
           className={`portal-tab-btn ${activeTab === "lifecycle" ? "active" : ""}`}
           onClick={() => setActiveTab("lifecycle")}
         >
-          ≡ƒöä ProofLoop Handover ({lifecycleBookings.length})
+          🔄 ProofLoop Handover ({lifecycleBookings.length})
         </button>
         <button
           className={`portal-tab-btn ${activeTab === "audit" ? "active" : ""}`}
           onClick={() => setActiveTab("audit")}
         >
-          ≡ƒô£ Activity History
+          📜 Activity History
         </button>
       </div>
 
@@ -575,17 +575,17 @@ function App() {
               </p>
               <div className="hero-actions">
                 <a className="primary-button" href="#explore">
-                  Explore Equipment <span>Γåù</span>
+                  Explore Equipment <span>↗</span>
                 </a>
                 <button
                   className="secondary-button"
                   onClick={() => setActiveTab("my-bookings")}
                 >
-                  My Reservations <span>ΓåÆ</span>
+                  My Reservations <span>→</span>
                 </button>
               </div>
               <div className="hero-note">
-                <span className="note-check">Γ£ô</span>
+                <span className="note-check">✓</span>
                 One campus. More possibilities.
               </div>
             </div>
@@ -594,32 +594,32 @@ function App() {
               <div className="visual-glow"></div>
               <div className="visual-card visual-card-back">
                 <span className="card-label">RESOURCE ACCESS</span>
-                <div className="resource-symbol">Γîÿ</div>
+                <div className="resource-symbol">⌘</div>
                 <span className="card-number">01 / 03</span>
               </div>
               <div className="visual-card visual-card-front">
                 <div className="visual-top">
                   <span className="resource-tag">EQUIPX / LABS</span>
-                  <span className="live-indicator">ΓùÅ LIVE</span>
+                  <span className="live-indicator">● LIVE</span>
                 </div>
-                <div className="equipment-art">Γî¼</div>
+                <div className="equipment-art">⌬</div>
                 <div className="visual-bottom">
                   <div>
                     <span className="small-label">BUILT FOR YOUR NEXT</span>
                     <h3>Big experiment.</h3>
                   </div>
-                  <div className="round-arrow">Γåù</div>
+                  <div className="round-arrow">↗</div>
                 </div>
               </div>
               <div className="floating-badge">
-                <span className="badge-check">Γ£ô</span>
+                <span className="badge-check">✓</span>
                 <div>
                   <strong>Ready to create</strong>
                   <p>Resources within reach</p>
                 </div>
               </div>
               <div className="visual-caption">
-                <span>01</span> / DISCOVER ┬╖ BOOK ┬╖ BUILD
+                <span>01</span> / DISCOVER · BOOK · BUILD
               </div>
             </div>
           </section>
@@ -627,21 +627,21 @@ function App() {
           {/* Feature Strip */}
           <section className="feature-strip" id="features">
             <div>
-              <span className="strip-icon">Γåù</span>
+              <span className="strip-icon">↗</span>
               <div>
                 <strong>Discover more</strong>
                 <p>Find the right equipment</p>
               </div>
             </div>
             <div>
-              <span className="strip-icon">Γù╖</span>
+              <span className="strip-icon">⏱</span>
               <div>
                 <strong>FairShare Scheduling</strong>
                 <p>Atomic double-booking prevention</p>
               </div>
             </div>
             <div>
-              <span className="strip-icon">Γ£ô</span>
+              <span className="strip-icon">✓</span>
               <div>
                 <strong>ProofLoop Handover</strong>
                 <p>Condition verification & audit trail</p>
@@ -662,7 +662,7 @@ function App() {
             </div>
 
             <div className="equipment-search">
-              <span>Γîò</span>
+              <span>🔍</span>
               <input
                 type="text"
                 placeholder="Search equipment, labs, or categories..."
@@ -692,7 +692,7 @@ function App() {
                 <article className="equipment-card" key={item.id}>
                   <div className="equipment-card-art">
                     <span className="equipment-category">{item.category}</span>
-                    <span className="equipment-card-icon">Γî¼</span>
+                    <span className="equipment-card-icon">⌬</span>
                     {/* Fixed Availability Label Bug: uses item.status === 'available' */}
                     <span
                       className={
@@ -710,7 +710,7 @@ function App() {
                   </div>
 
                   <div className="equipment-card-content">
-                    <span className="equipment-location">Γåù {item.location}</span>
+                    <span className="equipment-location">↗ {item.location}</span>
                     <h3>{item.name}</h3>
                     <p>{item.description}</p>
                     <button
@@ -718,7 +718,7 @@ function App() {
                       onClick={() => handleViewDetails(item.id)}
                       disabled={detailLoading}
                     >
-                      View details & Request <span>Γåù</span>
+                      View details & Request <span>↗</span>
                     </button>
                   </div>
                 </article>
@@ -762,7 +762,7 @@ function App() {
                   <div className="booking-card-top">
                     <div>
                       <h3>{b.resources?.name || "Equipment"}</h3>
-                      <span className="equipment-location">Γåù {b.resources?.location}</span>
+                      <span className="equipment-location">↗ {b.resources?.location}</span>
                     </div>
                     <span className={`status-pill ${b.status}`}>{b.status}</span>
                   </div>
@@ -770,7 +770,7 @@ function App() {
                   <div className="booking-card-meta" style={{ marginTop: "12px" }}>
                     <div>
                       <strong>Reservation Window:</strong><br />
-                      {new Date(b.start_time).toLocaleString()} ΓåÆ {new Date(b.end_time).toLocaleString()}
+                      {new Date(b.start_time).toLocaleString()} → {new Date(b.end_time).toLocaleString()}
                     </div>
 
                     {b.purpose && (
@@ -808,7 +808,7 @@ function App() {
                   className="primary-button"
                   onClick={() => setActiveTab("explore")}
                 >
-                  Explore Catalog <span>Γåù</span>
+                  Explore Catalog <span>↗</span>
                 </button>
               </div>
             )}
@@ -829,7 +829,7 @@ function App() {
 
           {ownerActionError && (
             <div style={{ background: "#FEE2E2", color: "#991B1B", padding: "12px 16px", borderRadius: "8px", marginBottom: "20px", fontWeight: "600" }}>
-              ΓÜá∩╕Å {ownerActionError}
+              ⚠️ {ownerActionError}
             </div>
           )}
 
@@ -853,7 +853,7 @@ function App() {
                   <div className="booking-card-meta" style={{ marginTop: "12px" }}>
                     <div>
                       <strong>Requested Window:</strong><br />
-                      {new Date(b.start_time).toLocaleString()} ΓåÆ {new Date(b.end_time).toLocaleString()}
+                      {new Date(b.start_time).toLocaleString()} → {new Date(b.end_time).toLocaleString()}
                     </div>
 
                     {b.purpose && (
@@ -865,7 +865,7 @@ function App() {
                     {/* TrustPass Eligibility Pill */}
                     <div style={{ marginTop: "8px" }}>
                       <span className={`eligibility-pill ${b.eligibility?.eligible ? "eligible" : "ineligible"}`}>
-                        {b.eligibility?.eligible ? "Γ£ô TrustPass: Eligible" : "ΓÜá TrustPass: Missing Prerequisites"}
+                        {b.eligibility?.eligible ? "✓ TrustPass: Eligible" : "⚠️ TrustPass: Missing Prerequisites"}
                       </span>
                     </div>
                   </div>
@@ -878,19 +878,19 @@ function App() {
                         className="btn-sm btn-approve"
                         onClick={() => handleApprove(b.id)}
                       >
-                        Γ£ô Approve Request
+                        ✓ Approve Request
                       </button>
                       <button
                         className="btn-sm btn-reject"
                         onClick={() => handleReject(b.id)}
                       >
-                        Γ£ò Reject
+                        ✕ Reject
                       </button>
                     </>
                   )}
                   {b.status === "approved" && (
                     <span style={{ fontSize: "12px", color: "#166534", fontWeight: "600" }}>
-                      Γ£ô Approved (Ready for handover in ProofLoop)
+                      ✓ Approved (Ready for handover in ProofLoop)
                     </span>
                   )}
                 </div>
@@ -938,7 +938,7 @@ function App() {
 
                   <div className="booking-card-meta" style={{ marginTop: "12px" }}>
                     <div>
-                      <strong>Window:</strong> {new Date(b.start_time).toLocaleString()} ΓåÆ {new Date(b.end_time).toLocaleString()}
+                      <strong>Window:</strong> {new Date(b.start_time).toLocaleString()} → {new Date(b.end_time).toLocaleString()}
                     </div>
                   </div>
                 </div>
@@ -953,7 +953,7 @@ function App() {
                         setHandoverNotes("");
                       }}
                     >
-                      ≡ƒÜÇ Issue Equipment (Check-out)
+                      🚀 Issue Equipment (Check-out)
                     </button>
                   )}
 
@@ -967,7 +967,7 @@ function App() {
                         setReportIncidentFlag(false);
                       }}
                     >
-                      ≡ƒôÑ Accept Return & Inspect
+                      📥 Accept Return & Inspect
                     </button>
                   )}
                 </div>
@@ -1058,7 +1058,7 @@ function App() {
                     </span>
                     {log.metadata?.previous_status && (
                       <span style={{ color: "#71717A", marginLeft: "8px" }}>
-                        ({log.metadata.previous_status} ΓåÆ {log.metadata.new_status})
+                        ({log.metadata.previous_status} → {log.metadata.new_status})
                       </span>
                     )}
                   </div>
@@ -1104,7 +1104,7 @@ function App() {
               }}
               aria-label="Close equipment details"
             >
-              ├ù
+              ×
             </button>
 
             {detailLoading && <p>Loading equipment details...</p>}
@@ -1121,7 +1121,7 @@ function App() {
                 <h2 id="resource-modal-title">{selectedResource.name}</h2>
 
                 <p className="resource-modal-location">
-                  Γåù {selectedResource.location || "Location not specified"}
+                  ↗ {selectedResource.location || "Location not specified"}
                 </p>
 
                 <p>{selectedResource.description || "No description provided."}</p>
@@ -1242,13 +1242,13 @@ function App() {
                 value={handoverGrade}
                 onChange={(e) => setHandoverGrade(e.target.value)}
               >
-                <option value="excellent">Excellent ΓÇö Like new</option>
-                <option value="good">Good ΓÇö Minor cosmetic signs of normal use</option>
-                <option value="fair">Fair ΓÇö Functional but noticeable wear</option>
+                <option value="excellent">Excellent — Like new</option>
+                <option value="good">Good — Minor cosmetic signs of normal use</option>
+                <option value="fair">Fair — Functional but noticeable wear</option>
                 {activeLifecycleModal.type === "return" && (
                   <>
-                    <option value="damaged">Damaged ΓÇö Needs repair or service</option>
-                    <option value="unusable">Unusable ΓÇö Severe damage/inoperable</option>
+                    <option value="damaged">Damaged — Needs repair or service</option>
+                    <option value="unusable">Unusable — Severe damage/inoperable</option>
                   </>
                 )}
               </select>
@@ -1329,7 +1329,7 @@ function App() {
                   onClick={() => setShowNotifDrawer(false)}
                   style={{ position: "static" }}
                 >
-                  ├ù
+                  ×
                 </button>
               </div>
             </div>
@@ -1376,7 +1376,7 @@ function App() {
           Equip<span>X</span>
         </a>
         <p>Share resources. Build bigger ideas.</p>
-        <span className="footer-mark">CAMPUS RESOURCE EXCHANGE PLATFORM Γåù</span>
+        <span className="footer-mark">CAMPUS RESOURCE EXCHANGE PLATFORM ↗</span>
       </footer>
     </div>
   );

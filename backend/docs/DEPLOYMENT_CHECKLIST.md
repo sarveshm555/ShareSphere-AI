@@ -1,4 +1,4 @@
-﻿# EquipX ΓÇö Deployment & Production Checklist (Member 3)
+# EquipX — Deployment & Production Checklist (Member 3)
 
 This checklist outlines the responsibilities and verification steps for **Member 3 (Backend Integration & Deployment)** to launch EquipX to production on Vercel/Netlify with Supabase.
 
@@ -21,13 +21,13 @@ This checklist outlines the responsibilities and verification steps for **Member
 
 Apply the SQL migration scripts sequentially in the Supabase Dashboard SQL Editor:
 
-1. `sql/01_core_schema.sql` ΓÇö Profiles, resources, requirements, base triggers, role escalation protection.
-2. `sql/02_eligibility_schema.sql` ΓÇö TrustPass eligibility verifications table and RLS policies.
-3. `sql/03_bookings_schema.sql` ΓÇö Bookings table, GiST exclusion lock (`prevent_overlapping_approved_bookings`), atomic approval RPC.
-4. `sql/04_handover_schema.sql` ΓÇö Handover records, condition reports, incidents, atomic checkout & return RPCs.
-5. `sql/05_audit_and_notifications_schema.sql` ΓÇö Audit ledger immutability trigger, in-app notifications, and auto-sync triggers.
-6. `sql/06_storage_policies.sql` ΓÇö Public `resource-images` bucket, private `condition-photos` bucket, and storage RLS.
-7. `sql/07_security_and_notification_fixes.sql` ΓÇö Security hardening of role assignment RPC (`public.is_admin()` check) and booking cancellation notification alerts.
+1. `sql/01_core_schema.sql` — Profiles, resources, requirements, base triggers, role escalation protection.
+2. `sql/02_eligibility_schema.sql` — TrustPass eligibility verifications table and RLS policies.
+3. `sql/03_bookings_schema.sql` — Bookings table, GiST exclusion lock (`prevent_overlapping_approved_bookings`), atomic approval RPC.
+4. `sql/04_handover_schema.sql` — Handover records, condition reports, incidents, atomic checkout & return RPCs.
+5. `sql/05_audit_and_notifications_schema.sql` — Audit ledger immutability trigger, in-app notifications, and auto-sync triggers.
+6. `sql/06_storage_policies.sql` — Public `resource-images` bucket, private `condition-photos` bucket, and storage RLS.
+7. `sql/07_security_and_notification_fixes.sql` — Security hardening of role assignment RPC (`public.is_admin()` check) and booking cancellation notification alerts.
 
 ---
 
